@@ -1,0 +1,30 @@
+.quizzPage{
+    width: 80%;
+    .quizzPageHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .quizzPageFooter{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+        button {
+            padding: 5px;
+            margin: 4px;
+            border: 1px solid #4d6cfb;
+            color: #4d6cfb;
+            border-radius: 4px;
+            background-color: #fff;
+            width: 80px;
+            font-size: 16px;
+        }
+        button:hover{
+            color: #fff;
+            background-color: #4d6cfb;
+            cursor: pointer;
+            box-shadow: 1px 1px 2px gray;
+        }
+    }
+}
