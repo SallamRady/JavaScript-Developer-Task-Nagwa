@@ -9,11 +9,8 @@ const Quizz = () => {
                 <h2>Word Categorizing Quizz</h2>
                 <p>7/10</p>
             </div>
-            <Question question='play'/>
-            <div className='quizzPageFooter'>
-                <button>Previous</button>
-                <button>Next</button>
-            </div>
+            <progress id="file" value="7" max="10"> 7 </progress>
+            <Question question='play'/>            
         </div>
     );
 };
