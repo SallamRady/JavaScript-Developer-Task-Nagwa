@@ -1,0 +1,56 @@
+.homePage {
+  width: 70%;
+  box-sizing: border-box;
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid #fff;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 3px 3px 10px grey;
+  .cardFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    button {
+      padding: 6px;
+      margin: 6px;
+      border: none;
+      background-color: #4d6cfb;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .ballon {
+      animation-name: ballonMovment;
+      animation-duration: 4s;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: both;
+      transition: all 0.5s;
+      position: relative;
+      animation-iteration-count: infinite;
+      width: 10%;
+      float: right;
+      margin-right: 2px;
+    }
+  }
+}
+
+@keyframes ballonMovment {
+  0% {
+    top: 0px;
+  }
+  25% {
+    top: 5px;
+  }
+  50% {
+    top: 10px;
+  }
+  75% {
+    top: 5px;
+  }
+  100% {
+    top: 0px;
+  }
+}
