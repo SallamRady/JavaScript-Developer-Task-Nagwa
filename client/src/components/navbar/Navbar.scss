@@ -1,16 +1,20 @@
 .mainNavbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 75px;
-    box-sizing: border-box;
-    padding: 20px;
-    box-shadow: 0px 2px 6px grey;
-    position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 75px;
+  box-sizing: border-box;
+  padding: 20px;
+  box-shadow: 0px 2px 6px grey;
+  position: sticky;
+  .mainHeader {
+    color: #4d6cfb;
+  }
   p {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-weight: 400;
     img.userImg {
       height: 40px;
       width: 40px;
