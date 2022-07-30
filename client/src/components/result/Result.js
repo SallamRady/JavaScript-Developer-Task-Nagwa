@@ -2,11 +2,14 @@ import React, { useState,useContext, useEffect } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
 import "./Resut.scss";
 import { useNavigate } from "react-router";
+import axios from "axios";
+import { HostName } from "../../utils/globalVariables";
 
 const Result = () => {
   // declaration
   const Navigator = useNavigate();
   const [score, setScore] = useState(0);
+  const [rank, setRank] = useState(0);
   const { questions, setProgressBar, startNewQuizz } = useContext(GlobalContext); // fetch data[questions] from context
   //calculate totalScore
   useEffect(() => {
@@ -17,6 +20,20 @@ const Result = () => {
     });
     // console.log(totalScore);
     setScore(totalScore);
+    // send post request to calc rank
+    axios({
+      method: 'post',
+      url: `${HostName}/getRank`,
+      headers: {
+        'Content-Type': 'application/json'
+      }, 
+      data: {
+        score: totalScore,
+      }
+    }).then(response => {
+      //console.log(response.data)
+      setRank(response.data.rank)
+    });
   }, []);
   /**
    * method:handleTryAgain
@@ -40,7 +57,7 @@ const Result = () => {
   return (
     <div className='resultContainer'>
       <div className="resultCard">
-        <p>final Score : {score}</p>
+        <p>final Score : {score}  -  Rank : {rank} %</p>
         <button onClick={handleTryAgain}>Try Again</button>
       </div>
 
