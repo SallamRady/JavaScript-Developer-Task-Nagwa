@@ -14,6 +14,7 @@ function App() {
   useEffect(() => {
     startNewQuizz();
   }, []);
+  
   return (
     <div className="App">
       <Navbar />
