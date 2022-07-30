@@ -1,19 +1,18 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import Question from '../../components/question/Question';
+import {GlobalContext} from '../../context/GlobalContext';
 import './Quizz.scss';
 
 const Quizz = () => {
+    const { progressBar } = useContext(GlobalContext);
     return (
         <div className='quizzPage'>
             <div className='quizzPageHeader'>
                 <h2>Word Categorizing Quizz</h2>
-                <p>7/10</p>
+                <p>{progressBar}/10</p>
             </div>
-            <Question question='play'/>
-            <div className='quizzPageFooter'>
-                <button>Previous</button>
-                <button>Next</button>
-            </div>
+            <progress id="file" value={progressBar} max="10"> {progressBar} </progress>
+            <Question/>            
         </div>
     );
 };
