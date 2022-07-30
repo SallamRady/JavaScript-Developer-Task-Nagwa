@@ -1,10 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
 import "./Question.scss";
+import {useNavigate} from 'react-router';
 
 const Question = () => {
   // declaration
   let initialSeconds = 15;
+  const Navigator = useNavigate();
   const { questions,setProgressBar,progressBar } = useContext(GlobalContext); // fetch data[questions] from context
   const [alert, setAlert] = useState(false); // alert to make questuion required
   const [answer, setAnswer] = useState(null);
@@ -22,8 +24,10 @@ const Question = () => {
       setQuestion(selectedQues);
       setAlert(false);
       setSeconds(initialSeconds);
+      setProgressBar(progressBar+1);
+    }else{
+      Navigator('/quizz/result');
     }
-    setProgressBar(progressBar+1);
   }, [id]);
   /*
    * make question timer
