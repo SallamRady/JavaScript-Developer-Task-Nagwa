@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+import React, {useEffect,useContext} from "react";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/home/Home";
@@ -7,8 +7,13 @@ import Quizz from "./pages/quizz/Quizz";
 import {Route,Routes} from 'react-router-dom';
 import Question from "./components/question/Question";
 import Result from "./components/result/Result";
+import { GlobalContext } from "./context/GlobalContext";
 
 function App() {
+  const {startNewQuizz} = useContext(GlobalContext);
+  useEffect(() => {
+    startNewQuizz();
+  }, []);
   return (
     <div className="App">
       <Navbar />

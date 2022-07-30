@@ -11,9 +11,9 @@ const Quizz = () => {
         <div className='quizzPage'>
             <div className='quizzPageHeader'>
                 <h2>Word Categorizing Quizz</h2>
-                <p>{progressBar > 10 ? 10 : progressBar}/10</p>
+                <p>{progressBar > 10 ? 10 : progressBar+1}/10</p>
             </div>
-            <progress id="file" value={progressBar} max="10"> {progressBar} </progress>
+            <progress id="file" value={progressBar+1} max="10"> {progressBar+1} </progress>
             {/* {progressBar <= 10 && <Question/>}        
             {progressBar > 10 && <Result/>}         */}
             <Outlet/>

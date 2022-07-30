@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React,{useContext,useEffect} from "react";
 import "./Home.scss";
 import Balloons from "../../assets/images/Balloons.png";
 import { useNavigate } from "react-router";
@@ -7,7 +7,6 @@ import axios from "axios";
 
 const Home = () => {
   // declaration
-  const HostName = 'http://localhost:4000';
   const Navigator = useNavigate();
   const {startNewQuizz,setQuestions} = useContext(GlobalContext);
   /**
@@ -15,18 +14,8 @@ const Home = () => {
    * function:clear global state and start again
    */
   const handleTakeQuizz = async () => {
-    //startNewQuizz();
-    //Navigator('/quizz/newquizz');
-    console.log('ttttttttttt');
-    await axios.get(`${HostName}/getWords`).then(
-      res=>{
-        console.log(res.data);
-        setQuestions(res.data.data);
-      }
-    ).catch(
-      err=>console.log('error in fetch words list')
-    );
-    
+    startNewQuizz();
+    Navigator('/quizz/newquizz');
   }
   return (
     <div className="homePage">
