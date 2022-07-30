@@ -1,4 +1,5 @@
 import React,{useContext} from 'react';
+import { Outlet } from 'react-router-dom';
 import Question from '../../components/question/Question';
 import Result from '../../components/result/Result';
 import {GlobalContext} from '../../context/GlobalContext';
@@ -13,8 +14,9 @@ const Quizz = () => {
                 <p>{progressBar > 10 ? 10 : progressBar}/10</p>
             </div>
             <progress id="file" value={progressBar} max="10"> {progressBar} </progress>
-            {progressBar <= 10 && <Question/>}        
-            {progressBar > 10 && <Result/>}        
+            {/* {progressBar <= 10 && <Question/>}        
+            {progressBar > 10 && <Result/>}         */}
+            <Outlet/>
         </div>
     );
 };
