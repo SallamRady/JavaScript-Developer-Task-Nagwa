@@ -5,30 +5,32 @@ import { useNavigate } from "react-router";
 
 const Question = () => {
   // declaration
-  let initialSeconds = 15;
+  let initialSeconds = 15;//time for question
   const Navigator = useNavigate();
   const { questions, setProgressBar, progressBar } = useContext(GlobalContext); // fetch data[questions] from context
-  const [alert, setAlert] = useState(false); // alert to make questuion required
+  const [alert, setAlert] = useState(false); // alert to make questuion required 
   const [answer, setAnswer] = useState(null);
   const [question, setQuestion] = useState({});
   const [id, setId] = useState(1);
   const [seconds, setSeconds] = useState(initialSeconds);
   const [btnContent, setBtnContent] = useState("Next");
-  // methods
-  
 
+  // methods
   /* get question according id */
   useEffect(() => {
     if (id <= 10) {
-      let selectedQues = questions.find((item) => item.id === id);
-      setQuestion(selectedQues);
+      let selectedQuestion = questions.find((item) => item.id === id);
+      setQuestion(selectedQuestion);
       setAlert(false);
       setSeconds(initialSeconds);
       setProgressBar(progressBar + 1);
     } else {
+      // questions finished
       Navigator("/quizz/result");
     }
   }, [id]);
+
+
   /* make question timer */
   useEffect(() => {
     var timer = setInterval(() => {
@@ -46,6 +48,8 @@ const Question = () => {
       clearInterval(timer);
     };
   }, [seconds]);
+
+
   /*
    * method:setScore
    * function:set Score for question according answer
@@ -61,11 +65,12 @@ const Question = () => {
         item.choose = answer ? answer : question.choose;
       }
     });
-    console.log(questions);
   };
+
+
   /*
    * method:goToNext
-   * function:move between questions[next/pravious]
+   * function:move to next question
    */
   const goToNext = () => {
     if ((answer === null || answer.trim() === "") && seconds !== 0) {
@@ -77,6 +82,7 @@ const Question = () => {
         setSeconds(-1); //clearInterval(timer);
       }
       if (id == 9) {
+        //next question is the last question
         setBtnContent("Submit");
       }
     }

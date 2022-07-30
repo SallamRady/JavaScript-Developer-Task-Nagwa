@@ -10,6 +10,9 @@ import Result from "./components/result/Result";
 import { GlobalContext } from "./context/GlobalContext";
 
 function App() {
+  /**
+   * startNewQuizz method in global context connect with back to get questions array
+   */
   const {startNewQuizz} = useContext(GlobalContext);
   useEffect(() => {
     startNewQuizz();

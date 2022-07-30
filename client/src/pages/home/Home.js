@@ -8,10 +8,10 @@ import axios from "axios";
 const Home = () => {
   // declaration
   const Navigator = useNavigate();
-  const {startNewQuizz,setQuestions} = useContext(GlobalContext);
+  const {startNewQuizz} = useContext(GlobalContext);
   /**
    * method:handleTakeQuizz
-   * function:clear global state and start again
+   * function:start a new quizz
    */
   const handleTakeQuizz = async () => {
     startNewQuizz();
