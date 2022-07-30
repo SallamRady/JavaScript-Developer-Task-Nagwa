@@ -22,15 +22,8 @@ const Question = () => {
       setQuestion(selectedQues);
       setAlert(false);
       setSeconds(initialSeconds);
-      setProgressBar(progressBar+1);
-    } else {
-      //submit
-      let totalScore = 0;
-      questions.forEach((item) => {
-        totalScore = totalScore + Number(item.score);
-      });
-      console.log(totalScore);
     }
+    setProgressBar(progressBar+1);
   }, [id]);
   /*
    * make question timer
