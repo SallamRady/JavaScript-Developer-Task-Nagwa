@@ -1,13 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
 import "./Question.scss";
-import {useNavigate} from 'react-router';
+import { useNavigate } from "react-router";
 
 const Question = () => {
   // declaration
   let initialSeconds = 15;
   const Navigator = useNavigate();
-  const { questions,setProgressBar,progressBar } = useContext(GlobalContext); // fetch data[questions] from context
+  const { questions, setProgressBar, progressBar } = useContext(GlobalContext); // fetch data[questions] from context
   const [alert, setAlert] = useState(false); // alert to make questuion required
   const [answer, setAnswer] = useState(null);
   const [question, setQuestion] = useState({});
@@ -15,23 +15,21 @@ const Question = () => {
   const [seconds, setSeconds] = useState(initialSeconds);
   const [btnContent, setBtnContent] = useState("Next");
   // methods
-  /*
-   * get question according id
-   */
+  
+
+  /* get question according id */
   useEffect(() => {
     if (id <= 10) {
       let selectedQues = questions.find((item) => item.id === id);
       setQuestion(selectedQues);
       setAlert(false);
       setSeconds(initialSeconds);
-      setProgressBar(progressBar+1);
-    }else{
-      Navigator('/quizz/result');
+      setProgressBar(progressBar + 1);
+    } else {
+      Navigator("/quizz/result");
     }
   }, [id]);
-  /*
-   * make question timer
-   */
+  /* make question timer */
   useEffect(() => {
     var timer = setInterval(() => {
       if (seconds > 0) {
@@ -90,7 +88,7 @@ const Question = () => {
       {alert && <p className="alert"> required! please answer the question </p>}
       <form id="myForm">
         <p>
-          <span>{question.word?question.word:'loading'}</span>
+          <span>{question.word ? question.word : "loading"}</span>
           <span>{seconds >= 0 ? seconds : 0} sec</span>
         </p>
         <input
@@ -98,7 +96,7 @@ const Question = () => {
           type="radio"
           id="adjective"
           name="questionId"
-          onClick = {() => {
+          onClick={() => {
             setAnswer("adjective");
             setAlert(false);
           }}
@@ -109,7 +107,7 @@ const Question = () => {
           type="radio"
           id="adverb"
           name="questionId"
-          onClick = {() => {
+          onClick={() => {
             setAnswer("adverb");
             setAlert(false);
           }}
@@ -121,7 +119,7 @@ const Question = () => {
           id="noun"
           name="questionId"
           value="noun"
-          onClick = {() => {
+          onClick={() => {
             setAnswer("noun");
             setAlert(false);
           }}
@@ -133,7 +131,7 @@ const Question = () => {
           id="verb"
           name="questionId"
           value="verb"
-          onClick = {() => {
+          onClick={() => {
             setAnswer("verb");
             setAlert(false);
           }}
