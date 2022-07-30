@@ -1,0 +1,30 @@
+$mainColor: #4d6cfb;
+.resultCard {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 15px;
+  margin: 10px;
+  box-sizing: border-box;
+  border-radius: 15px;
+  font-size: 21px;
+  color: $mainColor;
+
+  button {
+    padding: 7px;
+    font-size: 16px;
+    border: 1px solid $mainColor;
+    border-radius: 6px;
+    width: 135px;
+    color: #fff;
+    background-color: $mainColor;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  button:hover {
+    box-shadow: 1.5px 1.5px 3px gray;
+  }
+}
