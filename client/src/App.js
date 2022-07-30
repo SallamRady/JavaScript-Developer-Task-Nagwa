@@ -22,8 +22,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />}/>
           <Route path='/quizz' element={<Quizz/>}>
-          <Route path='newquizz' element={<Question />}/>
-          <Route path='result' element={<Result />}/>
+            <Route path='newquizz' element={<Question />}/>
+            <Route path='result' element={<Result />}/>
           </Route>
         </Routes>
       </div>

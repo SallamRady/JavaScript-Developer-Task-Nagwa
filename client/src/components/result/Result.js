@@ -18,7 +18,7 @@ const Result = () => {
     questions.forEach((item) => {
       totalScore = totalScore + Number(item.score);
     });
-    // console.log(totalScore);
+    console.log('totalScore:',totalScore);
     setScore(totalScore);
     // send post request to calc rank
     axios({
@@ -31,7 +31,7 @@ const Result = () => {
         score: totalScore,
       }
     }).then(response => {
-      //console.log(response.data)
+      console.log(response.data)
       setRank(response.data.rank)
     });
   }, []);

@@ -27,7 +27,7 @@ app.get("/getWords", (req, res, next) => {
 
 app.post("/getRank",(req, res, next)=>{
   console.log(req.body);
-  let rank = rankWorker.calcRank(req.body.score,30);
+  let rank = rankWorker.calcRank(req.body.score);
   res.json({"rank":rank})
 });
 
