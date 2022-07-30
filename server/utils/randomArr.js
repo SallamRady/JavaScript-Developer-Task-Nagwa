@@ -1,38 +1,71 @@
+let DBManager = require('../data/model');
+const verbList = DBManager.getVerb();
+const adverbList = DBManager.getAdverb();
+const nounList = DBManager.getNoun();
+const adjectiveList = DBManager.getAdjective();
+
+let result = [];
+let counter = 0;
 /**
  * 
- * @param {*} wordlist refer to list of words
- * @param {*} len refer to reuired length of new generated list
- * @returns return a list of {len} objects selected randomly from the "wordsList"
+ * @param {*} len refer to required length of generated array
+ * @returns a list of 10 objects selected randomly from the "wordsList". The array should include at least 1 adjective, 1 adverb, 1 noun, and 1 verb.
  */
-module.exports = (wordlist,len)=>{
-    // declaration
-    let uniqueIds = new Set();
-    let result = [];
-    let index = 0,mod = wordlist.length;
-    let verbState = false,nounState = false, adverbState = false, adjectiveState = false;
-    while(result.length < len){
-        index = Math.floor(Math.random() * mod);
-        if(wordlist[index].pos == 'adverb' && !adverbState){
-            result.push(wordlist[index]);
-            adverbState = true;
-        }else if(wordlist[index].pos == 'noun' && !nounState){
-            result.push(wordlist[index]);
-            nounState = true;
-        }else if(wordlist[index].pos == 'adjective' && !adjectiveState){
-            result.push(wordlist[index]);
-            adjectiveState = true;
-        }else if(wordlist[index].pos == 'verb' && !verbState){
-            result.push(wordlist[index]);
-            verbState = true;
-        }else if(adverbState && verbState && adjectiveState && nounState){
-            if(!uniqueIds.has(wordlist[index].id)){
-                result.push(wordlist[index]);
-            }
+module.exports.getRandomList = function getRandomList(len = 10) {
+    len = len > 15 ? 15 : len;
+    while (result.length < len) {
+        let mod = counter % 4;
+        switch (mod) {
+            case 1:
+                getNewVerb();
+                break;
+            case 2:
+                getNewNoun();
+                break;
+            case 3:
+                getNewAdjective();
+                break;
+            case 0:
+                getNewAdverb();
+                break;
         }
-
-        uniqueIds.add(wordlist[index].id);
+        counter++;
     }
-    console.log('enddddddddd');
-
     return result;
+};
+
+function getNewVerb() {
+    if (verbList.length) {
+        let index = Math.floor(Math.random() * verbList.length);
+        result.push(verbList[index]);
+        verbList.splice(index, 1);
+    }
+    return;
+}
+
+function getNewNoun() {
+    if (nounList.length) {
+        let index = Math.floor(Math.random() * nounList.length);
+        result.push(nounList[index]);
+        nounList.splice(index, 1);
+    }
+    return;
+}
+
+function getNewAdjective() {
+    if (adjectiveList.length) {
+        let index = Math.floor(Math.random() * adjectiveList.length);
+        result.push(adjectiveList[index]);
+        adjectiveList.splice(index, 1);
+    }
+    return;
+}
+
+function getNewAdverb() {
+    if (adverbList.length) {
+        let index = Math.floor(Math.random() * adverbList.length);
+        result.push(adverbList[index]);
+        adverbList.splice(index, 1);
+    }
+    return;
 }
