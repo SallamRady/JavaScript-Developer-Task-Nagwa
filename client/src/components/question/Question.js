@@ -56,7 +56,7 @@ const Question = () => {
     questions.map((item) => {
       if (item.id === id) {
         if (answer === item.pos) {
-          item.score = 1;
+          item.score = 10;
         } else {
           item.score = 0;
         }
@@ -90,7 +90,7 @@ const Question = () => {
       {alert && <p className="alert"> required! please answer the question </p>}
       <form id="myForm">
         <p>
-          <span>{question.word}</span>
+          <span>{question.word?question.word:'loading'}</span>
           <span>{seconds >= 0 ? seconds : 0} sec</span>
         </p>
         <input
