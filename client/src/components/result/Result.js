@@ -11,15 +11,16 @@ const Result = () => {
   const [score, setScore] = useState(0);
   const [rank, setRank] = useState(0);
   const { questions, setProgressBar, startNewQuizz } = useContext(GlobalContext); // fetch data[questions] from context
-  //calculate totalScore
+  
+  //calculate totalScore[final score]
   useEffect(() => {
     //submit
     let totalScore = 0;
     questions.forEach((item) => {
       totalScore = totalScore + Number(item.score);
     });
-    console.log('totalScore:',totalScore);
     setScore(totalScore);
+
     // send post request to calc rank
     axios({
       method: 'post',
@@ -35,15 +36,17 @@ const Result = () => {
       setRank(response.data.rank)
     });
   }, []);
+
   /**
    * method:handleTryAgain
-   * function:reset globa start start new quizz
+   * function:start new quizz again
    */
   const handleTryAgain = async () => {
     await startNewQuizz();
     setProgressBar(-1);
     Navigator("/quizz/newquizz");
   };
+
   const question = questions.map((item) => {
     return (
       <tr key={item.id}>
@@ -54,6 +57,8 @@ const Result = () => {
       </tr>
     );
   });
+
+  // return view
   return (
     <div className='resultContainer'>
       <div className="resultCard">

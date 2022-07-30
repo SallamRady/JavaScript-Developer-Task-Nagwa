@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 import "./Quizz.scss";
 
 const Quizz = () => {
+  // declaration
   const { progressBar, questions } = useContext(GlobalContext);
   const Navigator = useNavigate();
   /**
