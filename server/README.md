@@ -1,5 +1,5 @@
-# JavaScript-Developer-Task-Nagwa
-*   JavaScript Developer Task - Nagwa Company
+# JavaScript-Developer-Task-Nagwa-Server side
+*   JavaScript Developer Task - Nagwa Company - server side
 ## description
 *   In English language, words can be categorized according to their syntactic functions, which is known as "Part of Speech".
 Examples of part of speech: (noun, verb, adjective, ...)
@@ -21,19 +21,11 @@ after clone open directory in terminal
 
 3-node app.js
 
-open new terminal tab
-
-4- cd client
-
-5- npm start
-
-6- We're done, isn't it easy?  :)
+4- We're done, isn't it easy?  :)
 
 ## Technologies Used
 **Backend-technologies**
 - [NodeJs](https://nodejs.org/)
 - [ExpressJs](https://expressjs.com/)
 
-**Frontend-technologies**
-- [ReactJs](https://reactjs.org/)
 
