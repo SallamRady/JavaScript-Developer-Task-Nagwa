@@ -11,7 +11,7 @@ let sorted = {
     'noun': [],
 };
 // shuffle wordsList
-wordList.sort((a, b) => 0.5 - Math.random());
+wordList = wordList.sort((a, b) => 0.5 - Math.random());
 for (let i of wordList) {
     sorted[i.pos].push(i);
 }
